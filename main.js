@@ -1,6 +1,6 @@
-import {loadGLTF, loadTexture, loadVideo,} from "../../libs/loader.js";
-import { Material, MeshBasicMaterial } from "../../libs/three.js-r132/build/three.module.js";
-import {CSS3DObject} from "../../libs/three.js-r132/examples/jsm/renderers/CSS3DRenderer.js";
+import {loadGLTF, loadTexture, loadVideo,} from "/libs/loader.js";
+import { Material, MeshBasicMaterial } from "/libs/three.js-r132/build/three.module.js";
+import {CSS3DObject} from "/libs/three.js-r132/examples/jsm/renderers/CSS3DRenderer.js";
 
 
 const THREE = window.MINDAR.IMAGE.THREE;
@@ -9,24 +9,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const start = async() => {
     const mindarThree = new window.MINDAR.IMAGE.MindARThree({
       container: document.body,
-      imageTargetSrc: '../../assets/targets/target4.mind',
+      imageTargetSrc: '/assets/targets/target4.mind',
     });
     const {renderer,cssRenderer, scene, cssScene, camera} = mindarThree;
     
-    const video = await loadVideo("../../assets/videos/Werbung.mp4");
+    const video = await loadVideo("/assets/videos/Werbung.mp4");
     const texture = new THREE.VideoTexture(video);
     
    const loader = new THREE.TextureLoader();
 
     const playGeometry = new THREE.CircleGeometry(0.05, 50);
-    const playMaterial = new THREE.MeshBasicMaterial({map: loader.load("../../assets/images/play_Icon.png")});
+    const playMaterial = new THREE.MeshBasicMaterial({map: loader.load("/assets/images/play_Icon.png")});
     const playPlane = new THREE.Mesh(playGeometry, playMaterial);
     playPlane.position.set(-0.075, -0.3, 0);
     playPlane.userData.clickable = true;
     console.log("playPlane: " +playPlane.position);
 
     const pauseGeometry = new THREE.CircleGeometry(0.05, 50);
-    const pauseMaterial = new THREE.MeshBasicMaterial({map: loader.load("../../assets/images/Pause.png")});
+    const pauseMaterial = new THREE.MeshBasicMaterial({map: loader.load("/assets/images/Pause.png")});
     const pausePlane = new THREE.Mesh(pauseGeometry, pauseMaterial);
     pausePlane.position.set(0.075, -0.3, 0);
     pausePlane.userData.clickable = true;
